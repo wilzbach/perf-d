@@ -1,0 +1,29 @@
+SHELL=/bin/bash
+
+DMD_FLAGS=-inline -release -O -boundscheck=off
+LDC_FLAGS=-release -O3 -boundscheck=off
+LDC=ldc
+DMD=dmd
+
+bin/ldc/%: %.d | bin/ldc
+	$(LDC) $(LDC_FLAGS) $< -of$@
+
+bin/dmd/%: %.d | bin/dmd
+	$(DMD) $(DMD_FLAGS) $< -of$@
+
+test_%: test_%.d bin/ldc/test_% bin/dmd/test_%
+	@echo ">dmd"
+	@bin/dmd/$@
+	@echo ">ldc"
+	@bin/ldc/$@
+
+bin/ldc:
+	mkdir -p $@
+
+bin/dmd:
+	mkdir -p $@
+
+clean:
+	rm -rf bin
+
+ .SECONDARY:

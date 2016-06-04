@@ -4,20 +4,14 @@ Testing the performance of ranges in D.
 Do we really have zero-cost abstraction?
 Let's test!
 
-DMD
----
+Build & run
+-----------
 
 ```
-dmd -inline -release -O -boundscheck=off test_looping.d && ./test_looping
+make test_looping
 ```
 
-LDC
----
-
-```
-ldc -inline -release -O3 -boundscheck=off test_looping.d && ./test_looping
-```
-
+Or any of the tests available
 
 Current tests
 --------------

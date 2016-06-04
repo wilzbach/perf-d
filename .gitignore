@@ -1,4 +1,2 @@
 *.o
-test_looping
-test_save
-test_extremum
+bin
