@@ -8,14 +8,14 @@ DMD
 ---
 
 ```
-dmd -release -O -boundscheck=off test_looping.d && ./test_looping
+dmd -inline -release -O -boundscheck=off test_looping.d && ./test_looping
 ```
 
 LDC
 ---
 
 ```
-ldc -release -O3 -boundscheck=off test_looping.d && ./test_looping
+ldc -inline -release -O3 -boundscheck=off test_looping.d && ./test_looping
 ```
 
 
