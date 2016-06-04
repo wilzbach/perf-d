@@ -22,7 +22,7 @@ auto f_foreach(R)(R r, size_t needle)
 
 auto f_for(R)(R r, size_t needle)
 {
-    for (r.popFront(); !r.empty; r.popFront())
+    for (; !r.empty; r.popFront())
     {
         if (r.front == needle)
             return r; // note in std.algorithm `save` is used
@@ -52,7 +52,7 @@ void main() {
     void f0(){ check(arr.f_random_access(needle).front); }
     void f1(){ check(arr.f_foreach(needle).front); }
     void f2(){ check(arr.f_for(needle).front); }
-    auto rs = benchmark!(f0, f1, f2)(10_000);
+    auto rs = benchmark!(f0, f2, f1)(100_000);
     foreach(j,r;rs)
         writeln(j, " ", r.to!Duration);
 
