@@ -24,3 +24,4 @@ Current tests
 
 - `test_looping` - simple iteration test between manual loop and range API
 - `test_save` - tests performance when returning a range (common for search algorithms)
+- `test_extremum` - different specializations of `std.algorithm.searching.extremum`
