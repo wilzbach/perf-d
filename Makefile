@@ -26,12 +26,17 @@ bin/gdc/%: %.d | bin/gdc
 	$(GDC) $(GDC_FLAGS) $< -o $@
 
 test_%: test_%.d bin/ldc/test_% bin/dmd/test_% bin/gdc/test_%
+	@echo $@
 	@echo ">dmd"
 	@bin/dmd/$@
 	@echo ">ldc"
 	@bin/ldc/$@
 	@echo ">gdc"
 	@bin/gdc/$@
+	@echo
+
+TESTS=$(subst .d,,$(wildcard test_*.d))
+all: $(TESTS)
 
 clean:
 	rm -rf bin

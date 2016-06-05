@@ -8,4 +8,4 @@ d:
  - ldc-0.17.0
  - gdc
 script:
- - for f in test* ; do ; make ${f%%.*} ;done
+ - make all
