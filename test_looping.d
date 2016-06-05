@@ -41,7 +41,7 @@ auto f_for(R)(R r)
 
 void main() {
     import std.datetime: benchmark, Duration;
-    import std.stdio: writeln;
+    import std.stdio: writeln, writefln;
     import std.array: array;
     import std.conv: to;
     import std.random: randomShuffle;
@@ -57,7 +57,12 @@ void main() {
     void f3(){ i += arr.f_for; }
     auto rs = benchmark!(f0, f1, f2, f3)(10_000);
     foreach(j,r;rs)
-        writeln(j, " ", r.to!Duration);
+    {
+        version(GNU)
+            writefln("%d %d secs %d ms", j, r.seconds(), r.msecs());
+        else
+            writeln(j, " ", r.to!Duration);
+    }
 
     // prevent any optimization
     writeln(i);
