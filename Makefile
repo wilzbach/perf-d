@@ -2,6 +2,7 @@ SHELL=/bin/bash
 
 DMD_FLAGS=-inline -release -O -boundscheck=off
 LDC_FLAGS=-release -O3 -boundscheck=off
+# if gcc > 6, you can try -fbounds-check=off
 GDC_FLAGS=-finline-functions -frelease -O3
 LDC=ldc
 DMD=dmd
@@ -27,8 +28,8 @@ bin/gdc/%: %.d | bin/gdc
 
 test_%: test_%.d bin/ldc/test_% bin/dmd/test_% bin/gdc/test_%
 	@echo $@
-	@echo ">dmd"
-	@bin/dmd/$@
+	#@echo ">dmd"
+	#@bin/dmd/$@
 	@echo ">ldc"
 	@bin/ldc/$@
 	@echo ">gdc"
