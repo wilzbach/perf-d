@@ -52,7 +52,7 @@ void main() {
     void f0(){ check(arr.f_random_access(needle).front); }
     void f1(){ check(arr.f_foreach(needle).front); }
     void f2(){ check(arr.f_for(needle).front); }
-    auto rs = benchmark!(f0, f2, f1)(100_000);
+    auto rs = benchmark!(f0, f1, f2)(100_000);
     foreach(j,r;rs)
         version(GNU)
             writefln("%d %d secs %d ms", j, r.seconds(), r.msecs());
