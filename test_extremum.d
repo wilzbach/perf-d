@@ -63,7 +63,7 @@ auto extremum_range(alias map = "a", alias selector = "a < b", Range,
 
 void main() {
     import std.datetime: benchmark, Duration;
-    import std.stdio: writeln;
+    import std.stdio: writeln, writefln;
     import std.array: array;
     import std.conv: to;
     import std.random: randomShuffle;
@@ -77,7 +77,10 @@ void main() {
     void f1(){ i += arr.extremum_range(0); }
     auto rs = benchmark!(f0, f1)(50_000);
     foreach(j,r;rs)
-        writeln(j, " ", r.to!Duration);
+        version(GNU)
+            writefln("%d %d secs %d ms", j, r.seconds(), r.msecs());
+        else
+            writeln(j, " ", r.to!Duration);
 
     // prevent any optimization
     writeln(i);
