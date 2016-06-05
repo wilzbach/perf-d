@@ -26,15 +26,20 @@ bin/dmd/%: %.d | bin/dmd
 bin/gdc/%: %.d | bin/gdc
 	$(GDC) $(GDC_FLAGS) $< -o $@
 
-test_%: test_%.d bin/ldc/test_% bin/dmd/test_% bin/gdc/test_%
-	@echo $@
-	#@echo ">dmd"
-	#@bin/dmd/$@
-	@echo ">ldc"
-	@bin/ldc/$@
-	@echo ">gdc"
-	@bin/gdc/$@
+test_%: test_%.dmd test_%.ldc test_%.gdc
 	@echo
+
+test_%.dmd: bin/dmd/test_% test_%.d
+	@echo ">dmd"
+	@$<
+
+test_%.ldc: bin/ldc/test_% test_%.d
+	@echo ">ldc"
+	@$<
+
+test_%.gdc: bin/gdc/test_% test_%.d
+	@echo ">gdc"
+	@$<
 
 TESTS=$(subst .d,,$(wildcard test_*.d))
 all: $(TESTS)

@@ -13,6 +13,12 @@ Build & run
 make test_looping
 ```
 
+If you only want to run a benchmark for one compiler:
+
+```
+make test_looping.ldc
+```
+
 Or any of the tests available:
 
 Current tests
