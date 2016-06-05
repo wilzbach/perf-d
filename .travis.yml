@@ -1,7 +1,6 @@
 language: d
 os:
  - linux
- - osx
 d:
  - dmd-2.071.0
 install:
