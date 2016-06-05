@@ -32,7 +32,7 @@ auto f_for(R)(R r)
 {
     import std.range;
     auto sum = 0;
-    for (r.popFront(); !r.empty; r.popFront())
+    for (; !r.empty; r.popFront())
     {
         sum += r.front;
     }
