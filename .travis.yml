@@ -6,6 +6,13 @@ d:
  - dmd-2.071.0
 install:
  - source "$(curl -fsS  --retry 3 https://dlang.org/install.sh | CURL_USER_AGENT="$CURL_USER_AGENT" bash -s ldc-1.0.0-beta2 --activate)"
- - source "$(curl -fsS  --retry 3 https://dlang.org/install.sh | CURL_USER_AGENT="$CURL_USER_AGENT" bash -s gdc --activate)"
+ - source "$(curl -fsS  --retry 3 https://dlang.org/install.sh | CURL_USER_AGENT="$CURL_USER_AGENT" bash -s gdc-5.2.0 --activate)"
+ - ln -s $HOME/dlang/ldc-1.0.0-beta2/bin/ldc2 $HOME/dlang/ldc-1.0.0-beta2/bin/ldc
+ - echo $PATH
+ - echo $LIBRARY_PATH
+ - echo $LD_LIBRARY_PATH
+ - dmd --version
+ - ldc --version
+ - gdc --version
 script:
  - make all
