@@ -2,7 +2,7 @@ SHELL=/bin/bash
 
 DMD_FLAGS=-inline -release -O -boundscheck=off
 LDC_FLAGS=-release -O3 -boundscheck=off
-GDC_FLAGS=-frelease -O3 -fbounds-check=off
+GDC_FLAGS=-frelease -finline-functions -O3 -fbounds-check=off
 LDC=ldc
 DMD=dmd
 GDC=gdc
