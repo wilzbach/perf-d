@@ -1,5 +1,5 @@
-Testing the performance of ranges in D.
-----------------------------------------
+Testing the performance of operations in D.
+-------------------------------------------
 
 [![Build Status](https://travis-ci.org/wilzbach/perf-ranges.svg?branch=master)](https://travis-ci.org/wilzbach/perf-ranges)
 
@@ -27,6 +27,8 @@ Current tests
 - `test_looping` - simple iteration test between manual loop and range API
 - `test_save` - tests performance when returning a range (common for search algorithms)
 - `test_extremum` - different specializations of `std.algorithm.searching.extremum`
+- `test_pow` - floating-point power calculation
+- `test_powi` - integer power calculation
 
 Running all tests
 -----------------
